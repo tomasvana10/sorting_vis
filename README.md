@@ -8,5 +8,6 @@ See how different sorting algorithms manage an array
 
 ## Installation
 - `git clone https://github.com/tomasvana10/sorting_visualisations.git`
+- `cd sorting_visualisations`
 - `pip install -r requirements.txt`
 - `python main.py`
