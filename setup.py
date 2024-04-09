@@ -4,24 +4,24 @@ with open("README.md") as f:
     LONG_DESCRIPTION = f.read()
 
 setup(
-    name="sorting-vis",
+    name="sorting_vis",
     version="1.0.0",
     author="Tomas Vana",
-    url="https://github.com/tomasvana10/sorting_visualisations",
+    url="https://github.com/tomasvana10/sorting_vis",
     description="Visualise how different sorting algorithms manage an array.",
     long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
     packages=find_packages(),
     license="MIT",
     platforms="any",
+    include_package_data=True,
     install_requires=[
         "customtkinter",
-        "numpy",
         "pillow"
     ],
     entry_points={
         "gui_scripts": [
-            "sorting = sorting_vis.main:start",
+            "sorting-ctk = sorting_vis.main:start",
         ],
     },
     classifiers=[

@@ -9,7 +9,6 @@ from os import path
 from random import randint
 from pathlib import Path
 
-import numpy as np
 from PIL import Image
 from customtkinter import (
     set_widget_scaling, set_appearance_mode, set_default_color_theme,
@@ -203,9 +202,9 @@ class ArrayVisualiser(CTkToplevel):
         set_widget_scaling(0.9)
         
         self.master = master
-        self._lowerbound = lowerbound
-        self._upperbound = upperbound
-        self._samplecount = samplecount
+        self._lower_bound = lowerbound
+        self._upper_bound = upperbound
+        self._sample_count = samplecount
         self._algorithm = algorithm
         
         self.sorter = SortingAlgorithms(self) 
@@ -253,11 +252,11 @@ class ArrayVisualiser(CTkToplevel):
         self.toggle_sort_button.configure(state="disabled", text="Stop sorting")
         self.initialise_sort_button.configure(state="normal")
         
-        self.arr = list(np.random.randint(self._lowerbound, self._upperbound, 
-                                          self._samplecount))
+        self.arr = [randint(self._lower_bound, self._upper_bound) \
+                    for _ in range(self._sample_count)]
         self._arr_length = len(self.arr)
-        self._min_val = np.min(self.arr)
-        self._max_val = np.max(self.arr)
+        self._min_val = min(self.arr)
+        self._max_val = max(self.arr)
         self._range = self._max_val - self._min_val
         
         self.render_array(self.arr)
@@ -407,7 +406,7 @@ def start():
     # entry point for package
     app = Home()
     app.mainloop()
-    
+
 if __name__ == "__main__":
     app = Home()
     app.mainloop()
