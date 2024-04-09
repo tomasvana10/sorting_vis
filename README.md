@@ -1,13 +1,16 @@
-# sorting_visualisations
+# sorting_vis
 See how different sorting algorithms manage an array
 
-## Packages
-- customtkinter
-- numpy
-- Pillow
+## Dependencies
+`customtkinter`
+`numpy`
+`Pillow`
 
 ## Installation
-- `git clone https://github.com/tomasvana10/sorting_visualisations.git`
-- `cd sorting_visualisations`
-- `pip install -r requirements.txt`
-- `python main.py`
+```
+pip install sorting_vis
+OR 
+pip3 install sorting_vis
+
+sorting_vis-ctk
+```
