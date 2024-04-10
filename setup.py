@@ -5,7 +5,7 @@ with open("README.md") as f:
 
 setup(
     name="sorting_vis",
-    version="1.0.0",
+    version="1.0.1",
     author="Tomas Vana",
     url="https://github.com/tomasvana10/sorting_vis",
     description="Visualise how different sorting algorithms manage an array.",

@@ -26,6 +26,10 @@ ASSETS_PATH = Path(__file__).resolve().parents[0] / "assets"
 # Append sorting times and function names from wrapper
 current_sort = {"name": "", "runtime": 0}
 
+def _wipe_runtime():
+    global current_sort
+    current_sort["runtime"] = 0
+
 def _sorting_time(func: Callable) -> None:
     def wrapper(*args, 
                 **kwargs
@@ -59,7 +63,10 @@ class Home(CTk):
         self.geometry("500x500")
         self.minsize(500, 500)
         set_widget_scaling(0.9)
-        set_default_color_theme(path.join(ASSETS_PATH, "themes", "TrojanBlue.json"))
+        set_default_color_theme(path.join(ASSETS_PATH, "themes", 
+                                          "TrojanBlue.json"))
+        set_appearance_mode("dark")
+        
         
         self._default_font = CTkFont(family="Courier New")
         self._screen_width = self.winfo_screenwidth()
@@ -79,9 +86,12 @@ class Home(CTk):
                                     font=CTkFont(family="Courier New", size=25, 
                                                  weight="bold"))
         self.sorting_image = CTkLabel(self, text="", 
-            image=CTkImage(Image.open(path.join(ASSETS_PATH, "sorting_vis.png")), size=(300,150)))
-        self.bluemoji_1 = CTkLabel(self, text="", image=CTkImage(Image.open(path.join(ASSETS_PATH, "gasp.png")), size=(100, 100)))
-        self.bluemoji_2 = CTkLabel(self, text="", image=CTkImage(Image.open(path.join(ASSETS_PATH, "thumbs_up.png")), size=(100, 100)))
+            image=CTkImage(Image.open(path.join(ASSETS_PATH, "sorting_vis.png")), 
+                           size=(300,150)))
+        self.bluemoji_1 = CTkLabel(self, text="", image=CTkImage(Image.open(
+                        path.join(ASSETS_PATH, "gasp.png")), size=(100, 100)))
+        self.bluemoji_2 = CTkLabel(self, text="", image=CTkImage(Image.open(
+                    path.join(ASSETS_PATH, "thumbs_up.png")), size=(100, 100)))
         
         
         self.choose_algorithm = CTkOptionMenu(self, 
@@ -156,8 +166,8 @@ class Home(CTk):
     def _init_array_visualiser(self) -> None:
         if self._verify_entries():
             self.array_visualiser = ArrayVisualiser(
-                             self, self.lower_input, self.upper_input, 
-                            self.sample_count_input, self.choose_algorithm.get())
+                self, self.lower_input, self.upper_input, self.sample_count_input, 
+                self.choose_algorithm.get())
             return
 
     def _clear_entries(self) -> None:
@@ -220,12 +230,12 @@ class ArrayVisualiser(CTkToplevel):
     
     def _make_content(self) -> None:
         self.frame = CTkFrame(self)
-        self.initialise_sort_button = CTkButton(self.frame, text="Initialise sort", 
+        self.initialise_sort_button = CTkButton(self.frame, text="Begin Sort", 
             command=lambda: self._initialise_sort(self.arr), state="disabled",
                                             font=self.master._default_font)
-        self.gen_new_arr_button = CTkButton(self.frame, text="Make a new array", 
+        self.gen_new_arr_button = CTkButton(self.frame, text="New Array", 
                     font=self.master._default_font, command=self._display_array)
-        self.toggle_sort_button = CTkButton(self.frame, text="Stop sorting", 
+        self.toggle_sort_button = CTkButton(self.frame, text="Stop", 
             font=self.master._default_font, state="disabled", 
             command=self._toggle_sort)
         self.exit_button = CTkButton(self.frame, text="Exit", 
@@ -249,6 +259,7 @@ class ArrayVisualiser(CTkToplevel):
 
     def _display_array(self) -> None:
         self.currently_sorting = False
+        _wipe_runtime()
         self.toggle_sort_button.configure(state="disabled", text="Stop sorting")
         self.initialise_sort_button.configure(state="normal")
         
@@ -281,13 +292,13 @@ class ArrayVisualiser(CTkToplevel):
         if self.currently_sorting:
             self.sorter.pause_sort = True
             self.currently_sorting = False
-            self.toggle_sort_button.configure(text="Start Sorting", 
+            self.toggle_sort_button.configure(text="Start", 
                                               state="normal")
             self.gen_new_arr_button.configure(state="normal")
         else:
             self.sorter.pause_sort = False
             self.currently_sorting = True 
-            self.toggle_sort_button.configure(text="Stop Sorting", 
+            self.toggle_sort_button.configure(text="Stop", 
                 state="normal")
             self.gen_new_arr_button.configure(state="disabled")
             self._initialise_sort(self.sorter._paused_array)
