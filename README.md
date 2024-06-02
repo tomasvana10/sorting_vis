@@ -15,8 +15,8 @@ ON MACOS/UNIX: source venv/bin/activate
 ```
 Install the package and run the gui script:
 ```
-pip install sorting_vis OR pip3 install sorting_vis
-sorting_vis-ctk
+pip install sorting-vis OR pip3 install sorting-vis
+sorting-ctk
 ```
 
 ## Gallery
