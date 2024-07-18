@@ -6,3 +6,7 @@ build
 dist
 sorting_vis.egg-info
 **/.DS_Store
+sorting_vis.dist
+sorting_vis.build
+sorting_vis.onefile-build
+notes.txt

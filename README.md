@@ -1,5 +1,10 @@
 # sorting_vis
-See how different sorting algorithms manage an array
+Visualise how different sorting algorithms manage an array
+<details><summary>Available algorithms</summary>
+
+![image](https://github.com/user-attachments/assets/9a87bc40-a98e-42e4-816e-48e804edc8f7)
+
+</details>
 
 ## Dependencies
 `customtkinter`
@@ -9,16 +14,21 @@ See how different sorting algorithms manage an array
 Make a virtual environment (recommended):
 ```
 pip install virtualenv
-python3 -m venv venv OR python -m venv venv
+python -m venv venv
+```
+Activate the virtual environment:
+```
 ON WINDOWS: venv\scripts\activate
 ON MACOS/UNIX: source venv/bin/activate
 ```
 Install the package and run the gui script:
 ```
-pip install sorting-vis OR pip3 install sorting-vis
+pip install sorting-vis
 sorting-ctk
 ```
 
+
 ## Gallery
-<img width="498" alt="sorting algorithm config" src="https://github.com/tomasvana10/sorting_vis/assets/124552709/bd027517-6122-4fa0-b848-acfcf97d2601">
-<img width="1440" alt="sorting algorithm visualisation" src="https://github.com/tomasvana10/sorting_vis/assets/124552709/b832e59f-46a0-4a61-b057-6019a86810da">
+![sorting homepage](https://github.com/user-attachments/assets/cf35563b-6c60-49ad-9d1f-8b7056c25daf)
+![sorter](https://github.com/user-attachments/assets/2a3cecc4-a90c-4003-b24c-3a1fb01fb4f7)
+

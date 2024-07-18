@@ -1,11 +1,11 @@
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
 
-with open("README.md") as f:
+with open("README.md", encoding="utf-8") as f:
     LONG_DESCRIPTION = f.read()
 
 setup(
     name="sorting_vis",
-    version="1.0.1",
+    version="2.0.1",
     author="Tomas Vana",
     url="https://github.com/tomasvana10/sorting_vis",
     description="Visualise how different sorting algorithms manage an array.",
@@ -15,13 +15,10 @@ setup(
     license="MIT",
     platforms="any",
     include_package_data=True,
-    install_requires=[
-        "customtkinter",
-        "pillow"
-    ],
+    install_requires=["customtkinter", "pillow"],
     entry_points={
         "gui_scripts": [
-            "sorting-ctk = sorting_vis.main:start",
+            "sorting-ctk = sorting_vis.__main__:start",
         ],
     },
     classifiers=[
@@ -33,6 +30,6 @@ setup(
         "Operating System :: OS Independent",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
-        "Topic :: Education"
-    ]
+        "Topic :: Education",
+    ],
 )
